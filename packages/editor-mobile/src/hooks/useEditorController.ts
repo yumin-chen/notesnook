@@ -137,7 +137,7 @@ export function useEditorController({
   const tabRef = useRef(tab);
   tabRef.current = tab;
 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const setTheme = useThemeEngineStore((store) => store.setTheme);
   const { colors } = useThemeColors("editor");
   const [title, setTitle] = useState("");
@@ -238,18 +238,18 @@ export function useEditorController({
         clearTimeout(timers.current?.change);
       }
 
-      const params = [
-        {
-          html: htmlContentRef.current,
-          ignoreEdit: ignoreEdit
-        },
-        tabRef.current.id,
-        tabRef.current.noteId,
-        currentSessionId
-      ];
-
       timers.current.change = setTimeout(async () => {
         htmlContentRef.current = editor.getHTML();
+        const params = [
+          {
+            html: htmlContentRef.current,
+            ignoreEdit: ignoreEdit
+          },
+          tabRef.current.id,
+          tabRef.current.noteId,
+          currentSessionId
+        ];
+
         const pendingContentIds =
           await pendingSaveRequests.getPendingContentIds();
         postAsyncWithTimeout(EditorEvents.content, ...params, 5000)
@@ -359,6 +359,7 @@ export function useEditorController({
             }
 
             scrollTo?.(noteState?.top || 0);
+            setLoading(false);
             countWords(0);
           }
 
