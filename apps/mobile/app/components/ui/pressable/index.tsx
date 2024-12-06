@@ -277,7 +277,7 @@ export const Pressable = ({
             ? getColorLinearShade(customSelectedColor, 0.3, false)
             : borderSelectedColor || borderColor
           : borderColor || "transparent",
-        borderWidth: borderWidth
+        borderWidth: noborder ? 0 : borderWidth
       },
       style,
       {

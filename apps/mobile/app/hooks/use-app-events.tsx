@@ -88,7 +88,7 @@ import {
   refreshNotesPage
 } from "../utils/events";
 import { getGithubVersion } from "../utils/github-version";
-import { tabBarRef } from "../utils/global-refs";
+import { fluidTabsRef } from "../utils/global-refs";
 import { sleep } from "../utils/time";
 import { NotesnookModule } from "../utils/notesnook-module";
 import { changeSystemBarColors } from "../stores/use-theme-store";
@@ -155,7 +155,7 @@ const onAppOpenedFromURL = async (event: { url: string }) => {
       clearAppState();
       editorState().movedAway = false;
       eSendEvent(eOnLoadNote, { newNote: true });
-      tabBarRef.current?.goToPage(1, false);
+      fluidTabsRef.current?.goToPage(1, false);
       return;
     }
   } catch (e) {

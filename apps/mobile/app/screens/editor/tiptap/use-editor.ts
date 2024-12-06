@@ -57,7 +57,7 @@ import {
   eShowMergeDialog,
   eUpdateNoteInEditor
 } from "../../../utils/events";
-import { tabBarRef } from "../../../utils/global-refs";
+import { fluidTabsRef } from "../../../utils/global-refs";
 import { sleep } from "../../../utils/time";
 import { unlockVault } from "../../../utils/unlock-vault";
 import { onNoteCreated } from "../../notes/common";
@@ -862,7 +862,7 @@ export const useEditor = (
     state.current.movedAway = false;
 
     if (!DDS.isTab) {
-      tabBarRef.current?.goToPage(1, false);
+      fluidTabsRef.current?.goToPage(1, false);
     }
     clearAppState();
     state.current.isRestoringState = false;
@@ -914,7 +914,7 @@ export const useEditor = (
     const noteId = useTabStore.getState().getCurrentNoteId();
     if (!noteId) {
       loadNote({ newNote: true });
-      if (tabBarRef.current?.page() === 1) {
+      if (fluidTabsRef.current?.page() === 1) {
         state.current.currentlyEditing = false;
       }
     } else if (state.current?.initialLoadCalled) {

@@ -58,7 +58,7 @@ import {
   openInternalLink,
   randId
 } from "./tiptap/utils";
-import { tabBarRef } from "../../utils/global-refs";
+import { fluidTabsRef } from "../../utils/global-refs";
 import { strings } from "@notesnook/intl";
 import { i18n } from "@lingui/core";
 
@@ -342,7 +342,7 @@ const useLockedNoteHandler = () => {
       }),
       eSubscribeEvent(eUnlockWithPassword, onSubmit)
     ];
-    if (tabRef.current?.locked && tabBarRef.current?.page() === 2) {
+    if (tabRef.current?.locked && fluidTabsRef.current?.page() === 2) {
       unlock();
     }
     return () => {

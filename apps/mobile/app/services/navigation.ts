@@ -31,7 +31,7 @@ import { useReminderStore } from "../stores/use-reminder-store";
 import { useTagStore } from "../stores/use-tag-store";
 import { useTrashStore } from "../stores/use-trash-store";
 import { eOnRefreshSearch, eUpdateNotebookRoute } from "../utils/events";
-import { rootNavigatorRef, tabBarRef } from "../utils/global-refs";
+import { appNavigatorRef, fluidTabsRef } from "../utils/global-refs";
 import { eSendEvent } from "./event-manager";
 
 /**
@@ -123,33 +123,35 @@ function queueRoutesForUpdate(...routesToUpdate: RouteName[]) {
 
 function navigate<T extends RouteName>(screen: T, params?: RouteParams[T]) {
   console.log(`Navigation.navigate ${screen} route`);
-  rootNavigatorRef.current?.navigate(screen as any, params);
+  appNavigatorRef.current?.navigate(screen as any, params);
 }
 
 function goBack() {
-  rootNavigatorRef.current?.goBack();
+  appNavigatorRef.current?.goBack();
 }
 
 function push<T extends RouteName>(screen: T, params: RouteParams[T]) {
   console.log(`Navigation.push ${screen} route`);
-  rootNavigatorRef.current?.dispatch(StackActions.push(screen as any, params));
+  appNavigatorRef.current?.dispatch(StackActions.push(screen as any, params));
 }
 
 function replace<T extends RouteName>(screen: T, params: RouteParams[T]) {
   console.log(`Navigation.replace ${screen} route`);
-  rootNavigatorRef.current?.dispatch(StackActions.replace(screen, params));
+  appNavigatorRef.current?.dispatch(
+    StackActions.replace(screen as string, params)
+  );
 }
 
 function popToTop() {
   console.log(`Navigation.popToTop`);
-  rootNavigatorRef.current?.dispatch(StackActions.popToTop());
+  appNavigatorRef.current?.dispatch(StackActions.popToTop());
 }
 
 function openDrawer() {
-  tabBarRef.current?.openDrawer();
+  fluidTabsRef.current?.openDrawer();
 }
 function closeDrawer() {
-  tabBarRef.current?.closeDrawer();
+  fluidTabsRef.current?.closeDrawer();
 }
 
 const Navigation = {

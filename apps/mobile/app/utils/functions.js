@@ -17,18 +17,19 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+import { strings } from "@notesnook/intl";
 import { Linking } from "react-native";
 import { db } from "../common/database";
 import { presentDialog } from "../components/dialog/functions";
 import { eSendEvent, ToastManager } from "../services/event-manager";
 import Navigation from "../services/navigation";
 import { useMenuStore } from "../stores/use-menu-store";
+import { useNotebookStore } from "../stores/use-notebook-store";
 import { useRelationStore } from "../stores/use-relation-store";
 import { useSelectionStore } from "../stores/use-selection-store";
+import { useTagStore } from "../stores/use-tag-store";
 import { eOnNotebookUpdated, eUpdateNoteInEditor } from "./events";
 import { getParentNotebookId } from "./notebooks";
-import { useTagStore } from "../stores/use-tag-store";
-import { strings } from "@notesnook/intl";
 
 function confirmDeleteAllNotes(items, type, context) {
   return new Promise((resolve) => {
@@ -59,7 +60,7 @@ function confirmDeleteAllNotes(items, type, context) {
 
 async function deleteNotebook(id, deleteNotes) {
   const notebook = await db.notebooks.notebook(id);
-  const parentId = getParentNotebookId(id);
+  const parentId = await getParentNotebookId(id);
   if (deleteNotes) {
     const noteRelations = await db.relations.from(notebook, "note").get();
     if (noteRelations?.length) {
@@ -69,8 +70,10 @@ async function deleteNotebook(id, deleteNotes) {
     }
   }
   await db.notebooks.moveToTrash(id);
-  if (parentId) {
-    eSendEvent(eOnNotebookUpdated, parentId);
+
+  eSendEvent(eOnNotebookUpdated, parentId);
+  if (!parentId) {
+    useNotebookStore.getState().refresh();
   }
 }
 
@@ -108,7 +111,6 @@ export const deleteItems = async (items, type, context) => {
     if (!result.delete) return;
     for (const id of ids) {
       await deleteNotebook(id, result.deleteNotes);
-      eSendEvent(eOnNotebookUpdated, await getParentNotebookId(id));
     }
   } else if (type === "tag") {
     presentDialog({

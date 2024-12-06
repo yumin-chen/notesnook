@@ -70,7 +70,7 @@ import {
   eUnlockWithPassword
 } from "../../../utils/events";
 import { openLinkInBrowser } from "../../../utils/functions";
-import { tabBarRef } from "../../../utils/global-refs";
+import { fluidTabsRef } from "../../../utils/global-refs";
 import { useDragState } from "../../settings/editor/state";
 import { EventTypes } from "./editor-events";
 import { EditorMessage, EditorProps, useEditorType } from "./types";
@@ -258,7 +258,7 @@ export const useEditorEvents = (
 
       if (deviceMode === "mobile") {
         editorState().movedAway = true;
-        tabBarRef.current?.goToPage(0);
+        fluidTabsRef.current?.goToPage(0);
       }
 
       setTimeout(() => {
@@ -268,8 +268,8 @@ export const useEditorEvents = (
   }, [editor, deviceMode, fullscreen]);
 
   const onHardwareBackPress = useCallback(() => {
-    console.log(tabBarRef.current?.page());
-    if (tabBarRef.current?.page() === 2) {
+    console.log(fluidTabsRef.current?.page());
+    if (fluidTabsRef.current?.page() === 2) {
       onBackPress();
       return true;
     }

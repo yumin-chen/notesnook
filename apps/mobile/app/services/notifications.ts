@@ -43,7 +43,7 @@ import { useRelationStore } from "../stores/use-relation-store";
 import { useReminderStore } from "../stores/use-reminder-store";
 import { useSettingStore } from "../stores/use-setting-store";
 import { useUserStore } from "../stores/use-user-store";
-import { tabBarRef } from "../utils/global-refs";
+import { fluidTabsRef } from "../utils/global-refs";
 import { convertNoteToText } from "../utils/note-to-text";
 import { NotesnookModule } from "../utils/notesnook-module";
 import { sleep } from "../utils/time";
@@ -408,7 +408,7 @@ async function loadNote(id: string, jump: boolean) {
   const note = await db.notes.note(id);
   if (!note) return;
   if (!DDS.isTab && jump) {
-    tabBarRef.current?.goToPage(1);
+    fluidTabsRef.current?.goToPage(1);
   }
   NotesnookModule.setAppState(
     JSON.stringify({

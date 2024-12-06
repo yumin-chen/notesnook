@@ -24,18 +24,16 @@ import { actionErrors } from "../generated/action-errors";
 import { actionConfirmations } from "../generated/action-confirmations";
 
 const SEARCH_IN_ROUTE_STRINGS = {
-  Notes: () => t`Search in in Notes`,
-  Notebooks: () => t`Search in in Notebooks`,
-  Notebook: () => t`Search in in Notebook`,
-  Favorites: () => t`Search in in Favorites`,
-  Reminders: () => t`Search in in Reminders`,
-  Trash: () => t`Search in in Trash`,
-  Settings: () => t`Search in in Settings`,
-  Tags: () => t`Search in in Tags`,
-  Editor: () => t`Search in in Editor`,
-  Home: () => t`Search in in Home`,
-  Search: () => t`Search in in Search`,
-  Monographs: () => t`Search in in Monographs`
+  Notes: () => t`Search in notes`,
+  Notebooks: () => t`Search in notebooks`,
+  Notebook: () => t`Search in notebook`,
+  Favorites: () => t`Search in favorites`,
+  Reminders: () => t`Search in reminders`,
+  Trash: () => t`Search in trash`,
+  Settings: () => t`Search in settings`,
+  Tags: () => t`Search in tags`,
+  Home: () => t`Search in home`,
+  Monographs: () => t`Search in monographs`
 };
 
 export const strings = {
@@ -1479,7 +1477,7 @@ For example:
     return (
       SEARCH_IN_ROUTE_STRINGS[
         routeName as keyof typeof SEARCH_IN_ROUTE_STRINGS
-      ]() || t`Search in ${routeName}`
+      ]?.() || t`Search in ${routeName}`
     );
   },
   logoutConfirmation: () =>
@@ -2380,5 +2378,13 @@ Use this if changes from other devices are not appearing on this device. This wi
       one: `Move all notes in this notebook to trash`,
       other: `Move all notes in these notebooks to trash`
     }),
-  emailCopied: () => t`Email copied`
+  emailCopied: () => t`Email copied`,
+  viewAllLimits: () => `View all limits`,
+  freePlan: () => t`Free plan`,
+  proPlan: () => t`Pro plan`,
+  essentialPlan: () => t`Essential plan`,
+  believerPlan: () => t`Believer plan`,
+  storage: () => t`Storage`,
+  used: () => t`used`,
+  editProfile: () => t`Edit profile`
 };
