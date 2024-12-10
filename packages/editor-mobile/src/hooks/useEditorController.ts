@@ -128,7 +128,10 @@ export function useEditorController({
   getTableOfContents,
   scrollTo
 }: {
-  update: () => void;
+  update: (
+    scrollTop?: number,
+    selection?: { to: number; from: number }
+  ) => void;
   getTableOfContents: () => any[];
   scrollTo: (top: number) => void;
 }): EditorController {
@@ -151,9 +154,9 @@ export function useEditorController({
     scroll: null
   });
 
-  if (!tabRef.current.noteId && loading) {
+  if (!tabRef.current.session?.noteId && loading) {
     setTimeout(() => {
-      if (!tabRef.current.noteId && loading) {
+      if (!tabRef.current.session?.noteId && loading) {
         setLoading(false);
       }
     }, 3000);
@@ -168,14 +171,14 @@ export function useEditorController({
       EditorEvents.contentchange,
       undefined,
       tabRef.current.id,
-      tabRef.current.noteId
+      tabRef.current.session?.noteId
     );
     const params = [
       {
         title
       },
       tabRef.current.id,
-      tabRef.current.noteId,
+      tabRef.current.session?.noteId,
       currentSessionId
     ];
     const pendingTitleIds = await pendingSaveRequests.getPendingTitleIds();
@@ -231,7 +234,7 @@ export function useEditorController({
         EditorEvents.contentchange,
         undefined,
         tabRef.current.id,
-        tabRef.current.noteId
+        tabRef.current.session?.noteId
       );
       if (!editor) return;
       if (typeof timers.current.change === "number") {
@@ -246,7 +249,7 @@ export function useEditorController({
             ignoreEdit: ignoreEdit
           },
           tabRef.current.id,
-          tabRef.current.noteId,
+          tabRef.current.session?.noteId,
           currentSessionId
         ];
 
@@ -297,14 +300,24 @@ export function useEditorController({
       if (timers.current.scroll !== null) clearTimeout(timers.current.scroll);
       timers.current.scroll = setTimeout(() => {
         if (
-          tabRef.current.noteId &&
-          tabRef.current.noteId === useTabStore.getState().getCurrentNoteId()
+          tabRef.current.session?.noteId &&
+          tabRef.current.session?.noteId ===
+            useTabStore.getState().getCurrentNoteId()
         ) {
-          useTabStore.getState().setNoteState(tabRef.current.noteId, {
-            top: value
-          });
+          post(
+            EditorEvents.saveScroll,
+            {
+              scrollTop: value,
+              selection: {
+                to: editors[tabRef.current.id]?.state.selection.to,
+                from: editors[tabRef.current.id]?.state.selection.from
+              }
+            },
+            tabRef.current.id,
+            tabRef.current.session?.noteId
+          );
         }
-      }, 16);
+      }, 300);
     },
     []
   );
@@ -315,12 +328,12 @@ export function useEditorController({
   }, [update]);
 
   useEffect(() => {
-    if (tab.locked) {
+    if (tab.session?.locked) {
       htmlContentRef.current = "";
       setLoading(true);
       onUpdate();
     }
-  }, [tab.locked, onUpdate]);
+  }, [tab.session?.locked, onUpdate]);
 
   const onMessage = useCallback(
     (event: Event & { data?: string }) => {
@@ -336,29 +349,21 @@ export function useEditorController({
       const editor = editors[tabRef.current.id];
       switch (type) {
         case "native:updatehtml": {
-          htmlContentRef.current = value;
-
+          htmlContentRef.current = value.data;
           if (tabRef.current.id !== useTabStore.getState().currentTab) {
             updateTabOnFocus.current = true;
           } else {
             if (!editor) break;
 
-            const noteState = tabRef.current?.noteId
-              ? useTabStore.getState().getNoteState(tabRef.current?.noteId)
-              : null;
-
             editor?.commands.setContent(htmlContentRef.current, false, {
               preserveWhitespace: true
             });
 
-            if (noteState) {
-              editor.commands.setTextSelection({
-                from: noteState.from,
-                to: noteState.to
-              });
+            if (value.selection) {
+              editor.commands.setTextSelection(value.selection);
             }
 
-            scrollTo?.(noteState?.top || 0);
+            scrollTo?.(value.scrollTop || 0);
             setLoading(false);
             countWords(0);
           }
@@ -366,11 +371,14 @@ export function useEditorController({
           break;
         }
         case "native:html":
-          if (htmlContentRef.current === value) break;
-          htmlContentRef.current = value;
+          if (htmlContentRef.current === value.data) {
+            setLoading(false);
+            break;
+          }
+          htmlContentRef.current = value.data;
           logger("info", "LOADING NOTE HTML");
           if (!editor) break;
-          update();
+          update(value.scrollTop, value.selection);
           setTimeout(() => {
             countWords(0);
           }, 300);
@@ -404,7 +412,7 @@ export function useEditorController({
       }
       post(type); // Notify that message was delivered successfully.
     },
-    [update, countWords, setTheme]
+    [update, setTheme, scrollTo, countWords]
   );
 
   useEffect(() => {
@@ -419,7 +427,7 @@ export function useEditorController({
       EditorEvents.filepicker,
       type,
       tabRef.current.id,
-      tabRef.current.noteId
+      tabRef.current.session?.noteId
     );
   }, []);
 
@@ -428,7 +436,7 @@ export function useEditorController({
       EditorEvents.download,
       attachment,
       tabRef.current.id,
-      tabRef.current.noteId
+      tabRef.current.session?.noteId
     );
   }, []);
   const previewAttachment = useCallback((attachment: Attachment) => {
@@ -436,11 +444,16 @@ export function useEditorController({
       EditorEvents.previewAttachment,
       attachment,
       tabRef.current.id,
-      tabRef.current.noteId
+      tabRef.current.session?.noteId
     );
   }, []);
   const openLink = useCallback((url: string) => {
-    post(EditorEvents.link, url, tabRef.current.id, tabRef.current.noteId);
+    post(
+      EditorEvents.link,
+      url,
+      tabRef.current.id,
+      tabRef.current.session?.noteId
+    );
     return true;
   }, []);
 
