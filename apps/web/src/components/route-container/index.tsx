@@ -20,7 +20,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import { PropsWithChildren } from "react";
 import { Button, Flex, Text } from "@theme-ui/components";
 import { ArrowLeft, Menu, Search, Plus, Close } from "../icons";
-import { useStore } from "../../stores/app-store";
 import { useStore as useSearchStore } from "../../stores/search-store";
 import useMobile from "../../hooks/use-mobile";
 import { debounce, usePromise } from "@notesnook/common";

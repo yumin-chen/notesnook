@@ -68,7 +68,7 @@ export async function attachFiles(files: File[]) {
 
   switch (imageCompressionConfig) {
     case ImageCompressionOptions.ENABLE: {
-      let compressedImages: FileWithURI[] = [];
+      const compressedImages: FileWithURI[] = [];
       for (const image of images) {
         const compressed = await compressImage(image, {
           maxWidth: (naturalWidth) => Math.min(1920, naturalWidth * 0.7),
