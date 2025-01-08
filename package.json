@@ -55,7 +55,6 @@
     "eslint-plugin-react-native": "^4.0.0",
     "eslint-plugin-unused-imports": "^2.0.0",
     "husky": "^8.0.1",
-    "nx": "^20.3.1",
     "prettier": "^2.8.8",
     "serve": "^14.0.1",
     "tsup": "^8.3.0"
@@ -64,6 +63,7 @@
     "eslint-plugin-header": "^3.1.1",
     "fdir": "^6.0.2",
     "listr2": "^8.2.3",
+    "nx": "^17.3.1",
     "patch-package": "^7.0.0",
     "rxjs": "^7.8.1",
     "typescript": "^5.7.2",
