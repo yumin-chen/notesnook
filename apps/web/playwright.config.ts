@@ -24,7 +24,7 @@ const IS_CI = !!process.env.CI;
 const config: PlaywrightTestConfig = {
   webServer: {
     command: "npm run start:test",
-    port: 3000,
+    port: 3003,
     timeout: 60 * 1000,
     reuseExistingServer: false
   },
@@ -39,7 +39,7 @@ const config: PlaywrightTestConfig = {
   preserveOutput: "failures-only",
   outputDir: "test-results",
   use: {
-    baseURL: "http://localhost:3000/",
+    baseURL: "http://localhost:3003/",
     headless: true,
     acceptDownloads: true,
 
@@ -55,35 +55,35 @@ const config: PlaywrightTestConfig = {
   },
   projects: IS_CI
     ? [
-        {
-          name: "Chromium",
-          use: {
-            browserName: "chromium"
-          }
+      {
+        name: "Chromium",
+        use: {
+          browserName: "chromium"
         }
-      ]
+      }
+    ]
     : [
-        {
-          name: "Chromium",
-          use: {
-            browserName: "chromium",
-            permissions: ["notifications"]
-          }
+      {
+        name: "Chromium",
+        use: {
+          browserName: "chromium",
+          permissions: ["notifications"]
         }
-        // {
-        //   name: "Firefox",
-        //   use: {
-        //     browserName: "firefox",
-        //     permissions: ["notifications"]
-        //   }
-        // },we
-        // {
-        //   name: "WebKit",
-        //   use: {
-        //     browserName: "webkit"
-        //   }
-        // }
-      ]
+      }
+      // {
+      //   name: "Firefox",
+      //   use: {
+      //     browserName: "firefox",
+      //     permissions: ["notifications"]
+      //   }
+      // },we
+      // {
+      //   name: "WebKit",
+      //   use: {
+      //     browserName: "webkit"
+      //   }
+      // }
+    ]
 };
 
 export default config;

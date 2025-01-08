@@ -19,7 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 export const APP_URL =
   process.env.NODE_ENV === "production"
     ? "https://app.notesnook.com"
-    : "http://localhost:3000";
+    : "http://localhost:3003";
 export const APP_URL_FILTER =
   process.env.NODE_ENV === "production"
     ? ["*://app.notesnook.com/*", "*://v3.notesnook.com/*"]
