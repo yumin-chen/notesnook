@@ -19,7 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import { test, expect } from "@playwright/test";
 import { AppModel } from "./models/app.model";
-import { getTestId, NOTE, TITLE_ONLY_NOTE } from "./utils";
+import { NOTE, TITLE_ONLY_NOTE } from "./utils";
 
 test("hide sidebar", async ({ page }) => {
   const app = new AppModel(page);

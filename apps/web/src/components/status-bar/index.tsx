@@ -28,7 +28,6 @@ import {
   Alert,
   SyncOff,
   Icon,
-  Lock,
   Unlock
 } from "../icons";
 import { useStore as useUserStore } from "../../stores/user-store";
