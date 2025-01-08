@@ -19,7 +19,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import { TemplateData } from "../index.js";
 import { parseHTML } from "../../html-parser.js";
-import { hasRequire } from "../../has-require.js";
 import { loadLanguage } from "./languages/index.js";
 import { template } from "./template.js";
 
