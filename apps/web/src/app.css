@@ -230,6 +230,6 @@ textarea,
   padding: 0px !important;
 }
 
-#app.app-focus-mode .toasts-container {
+#app.app-sidebar-hidden .toasts-container {
   display: none;
 }

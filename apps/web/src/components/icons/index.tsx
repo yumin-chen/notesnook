@@ -47,10 +47,10 @@ import {
   mdiEmailAlertOutline,
   mdiAccountOutline,
   mdiLogoutVariant,
-  mdiSunglasses,
-  mdiGlasses,
   mdiCogOutline,
   mdiHomeOutline,
+  mdiMenuClose,
+  mdiMenuOpen,
   mdiRecycle,
   mdiSync,
   mdiSyncOff,
@@ -349,8 +349,8 @@ export const Login = createIcon(mdiLoginVariant);
 export const Email = createIcon(mdiEmailAlertOutline);
 export const Signup = createIcon(mdiAccountOutline);
 export const Logout = createIcon(mdiLogoutVariant);
-export const FocusMode = createIcon(mdiGlasses);
-export const NormalMode = createIcon(mdiSunglasses);
+export const HideSidebar = createIcon(mdiMenuClose);
+export const NormalMode = createIcon(mdiMenuOpen);
 export const Settings = createIcon(mdiCogOutline);
 export const Home = createIcon(mdiHomeOutline);
 export const Restore = createIcon(mdiRecycle);
