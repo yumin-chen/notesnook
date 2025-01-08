@@ -87,7 +87,7 @@ for (const testCase of TESTS) {
   const durations = [];
   for (let i = 0; i < ITERATIONS; i++) {
     const context = await browser.newContext({
-      baseURL: "http://localhost:3000"
+      baseURL: "http://localhost:3003"
     });
     await context.addInitScript({
       content: `window.localStorage.setItem("skipInitiation", "true");

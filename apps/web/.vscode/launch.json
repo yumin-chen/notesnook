@@ -10,7 +10,7 @@
       "preLaunchTask": "Start Notesnook (web)",
       "postDebugTask": "Terminate All Tasks",
       "name": "Debug Chrome",
-      "url": "http://localhost:3000",
+      "url": "http://localhost:3003",
       "webRoot": "${workspaceFolder}"
     },
     {
@@ -20,7 +20,7 @@
       "preLaunchTask": "Start Notesnook (web)",
       "postDebugTask": "Terminate All Tasks",
       "name": "Debug Firefox",
-      "url": "http://localhost:3000",
+      "url": "http://localhost:3003",
       "webRoot": "${workspaceFolder}"
     }
   ]

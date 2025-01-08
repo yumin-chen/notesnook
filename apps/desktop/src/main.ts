@@ -101,21 +101,21 @@ async function createWindow() {
     ...(config.desktopSettings.nativeTitlebar
       ? {}
       : {
-          titleBarStyle:
-            process.platform === "win32" || process.platform === "darwin"
-              ? "hidden"
-              : "default",
-          frame: process.platform === "win32" || process.platform === "darwin",
-          titleBarOverlay: {
-            height: 37,
-            color: "#00000000",
-            symbolColor: config.windowControlsIconColor
-          },
-          trafficLightPosition: {
-            x: 16,
-            y: 12
-          }
-        }),
+        titleBarStyle:
+          process.platform === "win32" || process.platform === "darwin"
+            ? "hidden"
+            : "default",
+        frame: process.platform === "win32" || process.platform === "darwin",
+        titleBarOverlay: {
+          height: 37,
+          color: "#00000000",
+          symbolColor: config.windowControlsIconColor
+        },
+        trafficLightPosition: {
+          x: 16,
+          y: 12
+        }
+      }),
 
     webPreferences: {
       zoomFactor: config.zoomFactor,
@@ -204,7 +204,7 @@ app.on("activate", () => {
 });
 
 function createURL(options: CLIOptions, path = "/") {
-  const url = new URL(isDevelopment() ? "http://localhost:3000" : PROTOCOL_URL);
+  const url = new URL(isDevelopment() ? "http://localhost:3003" : PROTOCOL_URL);
 
   url.pathname = path;
   if (options.note === true) url.hash = "/notes/create/1";
