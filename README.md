@@ -1,6 +1,6 @@
 # Notesnook
 
-> An end-to-end encrypted note taking alternative to Evernote.
+> An E2E-encrypted note-taking alternative to Evernote.
 
 ## Overview
 
