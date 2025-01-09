@@ -1,12 +1,12 @@
-<p align="center">
-<img style="align:center; border-radius: 20px;" src="/resources/screenshots/mobile.jpg" alt="Notesnook mobile screenshot" width="250" />
-</p>
+# Notesnook Mobile
 
-<h1 align="center">Notesnook Mobile</h1>
-<h3 align="center">The mobile app is built using React Native, Typescript & Javascript for both iOS & Android.</h3>
-<p align="center">
-<a href="#developer-guide">Developer guide</a> | <a href="#build-instructions">How to build?</a>
-</p>
+> An E2E-encrypted note-taking alternative to Evernote.
+
+Notesnook Mobile | <a href="#developer-guide">Developer guide</a> | <a href="#build-instructions">How to build?</a>
+
+> [!NOTE]
+>
+> The mobile app is built using React Native, Typescript & Javascript for both iOS & Android.
 
 <p align="center">
     <a href="https://play.google.com/store/apps/details?id=com.streetwriters.notesnook">

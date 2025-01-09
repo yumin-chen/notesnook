@@ -1,4 +1,3 @@
-
 # Notesnook Desktop
 
 > An E2E-encrypted note-taking alternative to Evernote.
