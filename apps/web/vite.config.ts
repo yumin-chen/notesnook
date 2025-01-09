@@ -112,7 +112,7 @@ export default defineConfig({
     ]
   },
   server: {
-    port: 3003
+    port: 3000
   },
   worker: {
     format: "es",

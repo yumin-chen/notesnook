@@ -204,7 +204,7 @@ app.on("activate", () => {
 });
 
 function createURL(options: CLIOptions, path = "/") {
-  const url = new URL(isDevelopment() ? "http://localhost:3003" : PROTOCOL_URL);
+  const url = new URL(isDevelopment() ? "http://localhost:3000" : PROTOCOL_URL);
 
   url.pathname = path;
   if (options.note === true) url.hash = "/notes/create/1";
