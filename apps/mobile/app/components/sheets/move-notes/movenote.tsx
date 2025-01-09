@@ -122,6 +122,21 @@ export const MoveNotes = ({
         height: "100%"
       }}
     >
+      <Input
+        button={{
+          icon: "magnify",
+          color: colors.primary.accent,
+          size: SIZE.lg,
+          onPress: () => {}
+        }}
+        testID="hide-sidebar-input"
+        fwdRef={inputRef}
+        autoCapitalize="none"
+        onChangeText={(v) => {
+          loadNotes(v && v.trim() === "" ? undefined : v.trim());
+        }}
+        placeholder={strings.hideSidebar()}
+      />
       <Dialog context="local" />
 
       <DialogHeader title={strings.addNotesToNotebook(currentNotebook.title)} />
