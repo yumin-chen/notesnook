@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "mac-scrollbar": "^0.10.3",
-    "@mdi/js": "^7.2.96",
+    "@mdi/js": "^7.4.47",
     "@types/react": "^18.2.39",
     "@types/react-dom": "^18.2.17",
     "@types/react-modal": "3.16.3",
