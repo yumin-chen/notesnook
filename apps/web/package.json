@@ -86,7 +86,7 @@
   "devDependencies": {
     "@babel/core": "^7.22.5",
     "@playwright/test": "^1.48.2",
-    "@swc/plugin-react-remove-properties": "^6.0.2",
+    "@swc/plugin-react-remove-properties": "^6.0.3",
     "@trpc/server": "10.45.2",
     "@types/babel__core": "^7.20.1",
     "@types/event-source-polyfill": "^1.0.5",
