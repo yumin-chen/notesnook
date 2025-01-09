@@ -114,7 +114,7 @@ function App() {
       <Flex
         id="app"
         bg="background"
-        className={isHideSidebar ? "app-focus-mode" : ""}
+        className={isHideSidebar ? "app-sidebar-hidden" : ""}
         sx={{
           overflow: "hidden",
           flexDirection: "column",
