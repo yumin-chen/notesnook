@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@emotion/react": "11.11.1",
-    "@mdi/js": "^7.2.96",
+    "@mdi/js": "^7.4.47",
     "@mdi/react": "^1.6.0",
     "@notesnook/editor": "file:../editor",
     "@notesnook/theme": "file:../theme",
