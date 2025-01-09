@@ -24,7 +24,7 @@ const IS_CI = !!process.env.CI;
 const config: PlaywrightTestConfig = {
   webServer: {
     command: "npm run start:test",
-    port: 3003,
+    port: 3000,
     timeout: 60 * 1000,
     reuseExistingServer: false
   },
@@ -39,7 +39,7 @@ const config: PlaywrightTestConfig = {
   preserveOutput: "failures-only",
   outputDir: "test-results",
   use: {
-    baseURL: "http://localhost:3003/",
+    baseURL: "http://localhost:3000/",
     headless: true,
     acceptDownloads: true,
 
