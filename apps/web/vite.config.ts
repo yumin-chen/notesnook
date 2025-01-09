@@ -132,46 +132,46 @@ export default defineConfig({
   plugins: [
     ...(isAnalyzing
       ? [
-        visualizer({
-          gzipSize: true,
-          brotliSize: true,
-          open: true
-        }) as PluginOption
-      ]
+          visualizer({
+            gzipSize: true,
+            brotliSize: true,
+            open: true
+          }) as PluginOption
+        ]
       : []),
     ...((isThemeBuilder || isDesktop) && process.env.NODE_ENV === "production"
       ? []
       : [
-        VitePWA({
-          strategies: "injectManifest",
-          minify: true,
-          manifest: WEB_MANIFEST,
-          injectRegister: null,
-          srcDir: "",
-          filename: "service-worker.ts",
-          mode: "production",
-          workbox: { mode: "production" },
-          injectManifest: {
-            globPatterns: ["**/*.{js,css,html,wasm}", "**/open-sans-*.woff2"],
-            globIgnores: [
-              "**/node_modules/**/*",
-              "**/code-lang-*.js",
-              "pdf.worker.min.js"
-            ]
-          }
-        })
-      ]),
+          VitePWA({
+            strategies: "injectManifest",
+            minify: true,
+            manifest: WEB_MANIFEST,
+            injectRegister: null,
+            srcDir: "",
+            filename: "service-worker.ts",
+            mode: "production",
+            workbox: { mode: "production" },
+            injectManifest: {
+              globPatterns: ["**/*.{js,css,html,wasm}", "**/open-sans-*.woff2"],
+              globIgnores: [
+                "**/node_modules/**/*",
+                "**/code-lang-*.js",
+                "pdf.worker.min.js"
+              ]
+            }
+          })
+        ]),
     react({
       plugins: isTesting
         ? undefined
         : [
-          [
-            "@swc/plugin-react-remove-properties",
-            {
-              properties: ["^data-test-id$"]
-            }
+            [
+              "@swc/plugin-react-remove-properties",
+              {
+                properties: ["^data-test-id$"]
+              }
+            ]
           ]
-        ]
     }),
     envCompatible({
       prefix: "NN_",
@@ -187,12 +187,12 @@ export default defineConfig({
     ...(isDesktop
       ? []
       : [
-        prefetchPlugin({
-          excludeFn: (assetName) =>
-            assetName.includes("wa-sqlite-async") ||
-            !assetName.includes("wa-sqlite")
-        })
-      ])
+          prefetchPlugin({
+            excludeFn: (assetName) =>
+              assetName.includes("wa-sqlite-async") ||
+              !assetName.includes("wa-sqlite")
+          })
+        ])
   ]
 });
 
