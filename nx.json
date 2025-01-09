@@ -1,7 +1,9 @@
 {
   "targetDefaults": {
     "build": {
-      "dependsOn": ["^build"],
+      "dependsOn": [
+        "^build"
+      ],
       "outputs": [
         "{projectRoot}/build",
         "{projectRoot}/dist",
@@ -10,62 +12,105 @@
       "cache": true
     },
     "release": {
-      "dependsOn": ["^build"],
-      "outputs": ["{projectRoot}/build"]
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "{projectRoot}/build"
+      ]
     },
     "build:test": {
-      "dependsOn": ["^build"],
-      "outputs": ["{projectRoot}/build"],
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "{projectRoot}/build"
+      ],
       "cache": true
     },
     "build:beta": {
-      "dependsOn": ["^build"],
-      "outputs": ["{projectRoot}/build"]
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "{projectRoot}/build"
+      ]
     },
     "build:desktop": {
-      "dependsOn": ["^build"],
-      "outputs": ["{projectRoot}/build"],
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "{projectRoot}/build"
+      ],
       "cache": true
     },
     "start": {
-      "dependsOn": ["^build"]
+      "dependsOn": [
+        "^build"
+      ]
     },
     "start:desktop": {
-      "dependsOn": ["^build"]
+      "dependsOn": [
+        "^build"
+      ]
     },
     "test:e2e": {
-      "dependsOn": ["^build"]
+      "dependsOn": [
+        "^build"
+      ]
     },
     "test": {
-      "dependsOn": ["^build"]
+      "dependsOn": [
+        "^build"
+      ]
     },
     "run-android": {
-      "dependsOn": ["^build"]
+      "dependsOn": [
+        "^build"
+      ]
     },
     "run-ios": {
-      "dependsOn": ["^build"]
+      "dependsOn": [
+        "^build"
+      ]
     },
     "build-ios": {
-      "dependsOn": ["^build"]
+      "dependsOn": [
+        "^build"
+      ]
     },
     "build-android": {
-      "dependsOn": ["^build"]
+      "dependsOn": [
+        "^build"
+      ]
     },
     "release-android": {
-      "dependsOn": ["^build"]
+      "dependsOn": [
+        "^build"
+      ]
     },
     "release-android-bundle": {
-      "dependsOn": ["^build"]
+      "dependsOn": [
+        "^build"
+      ]
     },
     "release-ios": {
-      "dependsOn": ["^build"]
+      "dependsOn": [
+        "^build"
+      ]
     }
   },
   "namedInputs": {
-    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "default": [
+      "{projectRoot}/**/*",
+      "sharedGlobals"
+    ],
     "sharedGlobals": [],
-    "production": ["default"]
+    "production": [
+      "default"
+    ]
   },
   "parallel": 4,
-  "nxCloudAccessToken": "ZWM3ODgxNDgtNGUzZC00MjQ0LWE3MzMtZDdhMzE3ZGY2MWFlfHJlYWQ="
+  "nxCloudAccessToken": "ZDUxYjg1NjAtNGYyYy00OTdlLWFmNjMtYzExNjQyZWNmZDlhfHJlYWQtd3JpdGU="
 }
