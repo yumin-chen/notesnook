@@ -109,7 +109,7 @@
     "esbuild": "^0.24.2",
     "file-loader": "^6.2.0",
     "find-process": "^1.4.4",
-    "happy-dom": "^16.0.1",
+    "happy-dom": "^16.5.3",
     "ip": "^2.0.1",
     "lorem-ipsum": "^2.0.4",
     "otplib": "^12.0.1",
