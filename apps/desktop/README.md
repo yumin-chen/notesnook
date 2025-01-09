@@ -1,12 +1,13 @@
-<p align="center">
-<img style="align:center;" src="/resources/screenshots/web.jpg" alt="Notesnook desktop screenshot" width="600" />
-</p>
 
-<h1 align="center">Notesnook Desktop</h1>
-<h3 align="center">The desktop app is built using Electron & Typescript.</h3>
-<p align="center">
-<a href="https://notesnook.com/downloads">Downloads</a> | <a href="#developer-guide">Developer guide</a> | <a href="#build-instructions">How to build?</a>
-</p>
+# Notesnook Desktop
+
+> An E2E-encrypted note-taking alternative to Evernote.
+
+Notesnook Desktop | <a href="https://notesnook.com/downloads">Downloads</a> | <a href="#developer-guide">Developer guide</a> | <a href="#build-instructions">How to build?</a>
+
+> [!NOTE]
+>
+> The desktop app is built using Electron & Typescript.
 
 ## Getting started
 
