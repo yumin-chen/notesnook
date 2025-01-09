@@ -1,0 +1,42 @@
+lockfileVersion: '6.0'
+
+dependencies:
+  '@notesnook/sodium':
+    specifier: file:../sodium
+    version: file:../sodium(sodium-native@4.3.1)
+
+packages:
+
+  /libsodium-sumo@0.7.15:
+    resolution: {integrity: sha512-5tPmqPmq8T8Nikpm1Nqj0hBHvsLFCXvdhBFV7SGOitQPZAA6jso8XoL0r4L7vmfKXr486fiQInvErHtEvizFMw==}
+    dev: false
+
+  /libsodium-wrappers-sumo@0.7.15:
+    resolution: {integrity: sha512-aSWY8wKDZh5TC7rMvEdTHoyppVq/1dTSAeAR7H6pzd6QRT3vQWcT5pGwCotLcpPEOLXX6VvqihSPkpEhYAjANA==}
+    dependencies:
+      libsodium-sumo: 0.7.15
+    dev: false
+
+  /node-gyp-build@4.8.4:
+    resolution: {integrity: sha512-LA4ZjwlnUblHVgq0oBF3Jl/6h/Nvs5fzBLwdEF4nuxnFdsfajde4WfxtJr3CaiH+F6ewcIB/q4jQ4UzPyid+CQ==}
+    hasBin: true
+    dev: false
+
+  /sodium-native@4.3.1:
+    resolution: {integrity: sha512-YdP64gAdpIKHfL4ttuX4aIfjeunh9f+hNeQJpE9C8UMndB3zkgZ7YmmGT4J2+v6Ibyp6Wem8D1TcSrtdW0bqtg==}
+    dependencies:
+      node-gyp-build: 4.8.4
+    dev: false
+
+  file:../sodium(sodium-native@4.3.1):
+    resolution: {directory: ../sodium, type: directory}
+    id: file:../sodium
+    name: '@notesnook/sodium'
+    version: 2.1.3
+    requiresBuild: true
+    peerDependencies:
+      sodium-native: '>=4'
+    dependencies:
+      libsodium-wrappers-sumo: 0.7.15
+      sodium-native: 4.3.1
+    dev: false
