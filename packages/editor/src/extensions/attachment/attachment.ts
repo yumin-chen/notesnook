@@ -100,7 +100,13 @@ export const AttachmentNode = Node.create<AttachmentOptions>({
       shouldUpdate: ({ attrs: prev }, { attrs: next }) => {
         return prev.progress !== next.progress;
       },
-      forceEnableSelection: true
+      forceEnableSelection: true,
+      ignoreMutation: (mutation: MutationRecord | { type: "selection"; target: Element }) => {
+        if (mutation.type === "selection") {
+          return true;
+        }
+        return false;
+      }
     });
   },
 
